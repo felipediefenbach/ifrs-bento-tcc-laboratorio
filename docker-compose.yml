@@ -31,7 +31,9 @@ services:
     volumes:
       - ./src:/srv/src
       - ./public:/srv/public
+      - ./utils:/srv/utils
       - ./package.json:/srv/package.json
+      - ./package-lock.json:/srv/package-lock.json
 
 networks:
   labnet:
