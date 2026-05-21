@@ -1,0 +1,39 @@
+services:
+  laboratory_mysql:
+    container_name: 'laboratory_mysql'
+    image: 'mysql:latest'
+    ports:
+      - "0.0.0.0:3306:3306/tcp"
+    networks:
+      - labnet
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    environment:
+      MYSQL_DATABASE: laboratory
+      MYSQL_ROOT_PASSWORD: laboratory
+
+  laboratory_backend:
+    container_name: laboratory_backend
+    image: laboratory-backend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      laboratory_mysql:
+        condition: service_healthy
+    ports:
+      - "0.0.0.0:3000:3000/tcp"
+    networks:
+      - labnet
+    volumes:
+      - ./src:/srv/src
+      - ./public:/srv/public
+      - ./package.json:/srv/package.json
+
+networks:
+  labnet:
+    driver: bridge
+    name: labnet

@@ -7,12 +7,11 @@
 - MySQL
 - JWT (autenticação)
 - Bcrypt (criptografia)
-- Express Validator (validações)
 
 ## Requisitos
-- Node.js 14+
-- MySQL 5.7+
-- npm ou yarn
+- Node.js
+- MySQL
+- npm
 
 ## Instalação
 - Clone o repositório
