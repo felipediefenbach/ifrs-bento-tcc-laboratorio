@@ -1,9 +1,6 @@
 # Sistema de Controle de Estoque de Laboratório
 
-Backend API para gerenciamento de estoque de laboratório com autenticação JWT e MySQL.
-
-## 🚀 Tecnologias
-
+## Tecnologias
 - Node.js
 - Express
 - Sequelize (ORM)
@@ -12,15 +9,13 @@ Backend API para gerenciamento de estoque de laboratório com autenticação JWT
 - Bcrypt (criptografia)
 - Express Validator (validações)
 
-## 📋 Requisitos
-
+## Requisitos
 - Node.js 14+
 - MySQL 5.7+
 - npm ou yarn
 
-## 🔧 Instalação
-
-1. Clone o repositório
-2. Instale as dependências:
+## Instalação
+- Clone o repositório
+- Instale as dependências:
 ```bash
 npm install
