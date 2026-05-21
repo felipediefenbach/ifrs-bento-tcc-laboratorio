@@ -1,0 +1,41 @@
+<mxfile host="app.diagrams.net" agent="5.0">
+  <diagram name="Diagrama ER" id="er-diagram">
+    <mxGraphModel dx="1929" dy="1057" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="users-table" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;align=center;verticalAlign=top;fontFamily=Courier New;fontSize=12;" value="USERS&#xa;&#xa;PK  id : INTEGER&#xa;UK  email : VARCHAR(100)&#xa;    name : VARCHAR(100)&#xa;    password : VARCHAR(255)&#xa;    role : ENUM&#xa;    active : BOOLEAN&#xa;    createdAt : DATETIME&#xa;    updatedAt : DATETIME" vertex="1">
+          <mxGeometry height="190" width="260" x="120" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="materials-table" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;align=center;verticalAlign=top;fontFamily=Courier New;fontSize=12;" value="MATERIALS&#xa;&#xa;PK  id : INTEGER&#xa;UK  code : VARCHAR(50)&#xa;    name : VARCHAR(200)&#xa;    description : TEXT&#xa;    category : ENUM&#xa;    unit : VARCHAR(20)&#xa;    minimumStock : INTEGER&#xa;    currentStock : INTEGER&#xa;    location : VARCHAR(100)&#xa;    expiryDate : DATE&#xa;    manufacturer : VARCHAR(100)&#xa;    active : BOOLEAN&#xa;    createdAt : DATETIME&#xa;    updatedAt : DATETIME" vertex="1">
+          <mxGeometry height="320" width="300" x="550" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="movements-table" parent="1" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;strokeWidth=2;align=center;verticalAlign=top;fontFamily=Courier New;fontSize=12;" value="MOVEMENTS&#xa;&#xa;PK  id : INTEGER&#xa;FK  materialId : INTEGER&#xa;FK  userId : INTEGER&#xa;    type : ENUM&#xa;    quantity : INTEGER&#xa;    previousStock : INTEGER&#xa;    newStock : INTEGER&#xa;    reason : VARCHAR(255)&#xa;    observation : TEXT&#xa;    movementDate : DATETIME&#xa;    createdAt : DATETIME&#xa;    updatedAt : DATETIME" vertex="1">
+          <mxGeometry height="260" width="300" x="330" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-user-movements" edge="1" parent="1" source="users-table" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.371;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeWidth=2;strokeColor=#000000;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="462" />
+              <mxPoint x="451" y="462" />
+            </Array>
+            <mxPoint x="160" y="212.08" as="sourcePoint" />
+            <mxPoint x="451.29999999999995" y="540.0000000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-material-movements" edge="1" parent="1" source="materials-table" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeWidth=2;strokeColor=#000000;" target="movements-table" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="330" />
+            </Array>
+            <mxPoint x="610" y="360" as="sourcePoint" />
+            <mxPoint x="540" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yTXqV5CLaMqdrvsHmFHg-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;table align=&quot;left&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;span&gt;Users → Movements&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;1:N&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;Um usuário pode fazer várias movimentações&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;span&gt;Materials → Movements&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;1:N&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;Um material pode ter várias movimentações&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;span&gt;Movements → Users&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;N:1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;Uma movimentação pertence a um único usuário&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&lt;span&gt;Movements → Materials&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;N:1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;Uma movimentação refere-se a um único material&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="120" width="450" x="60" y="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
